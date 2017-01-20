@@ -1,0 +1,11 @@
+{
+  "name": "comp3025-assignment-1",
+  "version": "1.0.0",
+  "description": "Simple calculator app using jQuery Mobile",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael Joyce 200284329",
+  "license": "ISC"
+}

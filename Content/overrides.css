@@ -1,0 +1,40 @@
+body {
+    background-color: #454443;
+    font-size: 2em;
+}
+
+.calculator-body {
+    height: 100%;
+}
+
+#display {
+    width: 100%;
+    text-align: right;
+    height: 15%;
+}
+
+.ui-btn {
+    border: 4px #454443 solid;
+    height: 15%;
+    font-size: 0.8em;
+}
+
+.ui-grid-d {
+    width: 100% !important;
+}
+
+.operand {
+    background-color: #FFFDF7;
+}
+
+.operator {
+    background-color: #CC635A;
+}
+
+.equals {
+    background-color: #B22F23;
+}
+
+.function {
+    background-color: #98281E;
+}
