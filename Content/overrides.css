@@ -10,12 +10,12 @@ body {
 #display {
     width: 100%;
     text-align: right;
-    height: 15%;
+    height: 18%;
 }
 
 .ui-btn {
     border: 4px #454443 solid;
-    height: 15%;
+    height: 18%;
     font-size: 0.8em;
 }
 
