@@ -1,12 +1,70 @@
+/**
+ *  calculator.js
+ *  Michael Joyce | 200284329 | 25 January 2017
+ *  Logic for a simple calculator application.
+ */
+
 // Event Listener for Button elements
 $("button").click(function() {
 
+    if ($(this).hasClass("operand")) {
+       let result = $("#display").attr("value");
+       result += $(this).html();
+        $("#display").attr("value", result); 
+    }
+    else if ($(this).hasClass("operator") || $(this).hasClass("function")) {
+
+        let command = $(this).attr("id");
+
+        switch (command) {
+
+            case "multiply":
+            multiply();
+            break;
+
+            case "divide":
+            divide();
+            break;
+
+            case "add":
+            add();
+            break;
+
+            case "subtract":
+            subtract();
+            break;
+
+            case "squareRoot":
+            squareRoot();
+            break;
+
+            case "exponentiate":
+            exponentiate();
+            break;
+
+            case "factorial":
+            factorial();
+            break;
+
+            case "clear":
+            default:
+            clear();
+            break;         
+
+        }
+    }
+    
+    else if ($(this).hasClass("equals")) {
+
+    }
+    /* 
     console.log(multiply(4,5));
     console.log(divide(8,2));
     console.log(add(4,4));
     console.log(subtract(8,4));
     console.log(exponentiate(5,5));
     console.log(factorial($(this).html()));
+    */
 });
 
 /**
@@ -101,4 +159,5 @@ function factorial(input) {
  */
 function clear() {
 
+    $("#display").attr("value", "");
 }

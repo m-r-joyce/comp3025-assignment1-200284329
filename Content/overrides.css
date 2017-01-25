@@ -1,3 +1,8 @@
+/**
+ *  overrides.css
+ *  Michael Joyce | 200284329 | 25 January 2017
+ *  UI customizations to override jQuery Mobile defaults.
+ */
 body {
     background-color: #454443;
     font-size: 2em;
