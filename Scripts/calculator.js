@@ -8,8 +8,13 @@
 $("button").click(function() {
 
     if ($(this).hasClass("operand")) {
-       let result = $("#display").attr("value");
-       result += $(this).html();
+        let result = $("#display").attr("value");
+        if (result == 0) {
+            result = $(this).html();
+        }
+        else {
+        result += $(this).html();
+        }
         $("#display").attr("value", result); 
     }
     else if ($(this).hasClass("operator") || $(this).hasClass("function")) {
@@ -57,6 +62,7 @@ $("button").click(function() {
     else if ($(this).hasClass("equals")) {
 
     }
+    
     /* 
     console.log(multiply(4,5));
     console.log(divide(8,2));
@@ -113,7 +119,7 @@ function subtract(minuend, subtrahend) {
 function squareRoot(radicand) {
 
     if (radicand >= 0) {
-        let root; //This will be a lot; get back to it at some point.
+        let root = Math.sqrt(radicand);
         return root;
     }
     else {
@@ -159,5 +165,5 @@ function factorial(input) {
  */
 function clear() {
 
-    $("#display").attr("value", "");
+    $("#display").attr("value", 0);
 }
