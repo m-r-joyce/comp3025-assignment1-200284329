@@ -15,19 +15,20 @@ body {
 
 #display {
     width: 100%;
-    text-align: right;
     height: 18%;
     background-color: #FFFDF7;
-    font-size: 1.5em;
+    font-size: 1.7em;
+    text-align: right;
 }
 
 .ui-btn {
     border: 3px #454443 solid;
-    height: 18%;
-    font-size: 1.7em;
-    width: 90% !important;
+    height: 16%;
+    font-size: 1.3em;
+    width: 95% !important;
     margin-left: 5% !important;
     text-align: center;
+    padding: 0 0 !important;
 }
 
 .operand {
@@ -42,7 +43,7 @@ body {
     background-color: #FED928;
 }
 
-.function {
+.function, .clear {
     background-color: #173C72;
     color: #FFFDF7;
 }

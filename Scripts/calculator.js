@@ -4,11 +4,14 @@
  *  Logic for a simple calculator application.
  */
 
+var buffer;
+var command;
+
 // Event Listener for Button elements
 $("button").click(function() {
 
     if ($(this).hasClass("operand")) {
-        let result = $("#display").attr("value");
+        var result = $("#display").attr("value");
         if (result == 0) {
             result = $(this).html();
         }
@@ -19,50 +22,59 @@ $("button").click(function() {
     }
     else if ($(this).hasClass("operator") || $(this).hasClass("function")) {
 
-        let command = $(this).attr("id");
-
-        switch (command) {
-
-            case "multiply":
-            multiply();
-            break;
-
-            case "divide":
-            divide();
-            break;
-
-            case "add":
-            add();
-            break;
-
-            case "subtract":
-            subtract();
-            break;
-
-            case "squareRoot":
-            squareRoot();
-            break;
-
-            case "exponentiate":
-            exponentiate();
-            break;
-
-            case "factorial":
-            factorial();
-            break;
-
-            case "clear":
-            default:
-            clear();
-            break;         
-
-        }
+        buffer = $("#display").attr("value");
+        $("#display").attr("value", 0);
+        command = $(this).attr("id");
+        console.log(buffer);
+        
     }
     
     else if ($(this).hasClass("equals")) {
 
+        var input = $("#display").attr("value");
+        var result = 0;
+
+        console.log(command);
+
+        switch (command) {
+
+            case "multiply":
+            result = multiply(buffer, input);
+            break;
+
+            case "divide":
+            result = divide(buffer, input);
+            break;
+
+            case "add":
+            result = add(buffer, input);
+            break;
+
+            case "subtract":
+            result = subtract(buffer, input);
+            break;
+
+            case "squareRoot":
+            result = squareRoot(input);
+            break;
+
+            case "exponentiate":
+            result = exponentiate(buffer, input);
+            break;
+
+            case "factorial":
+            result = factorial(input);
+            break;
+
+        }        
+
+            $("#display").attr("value", result);
+        }
+    else if ($(this).hasClass("clear")) {
+        buffer = 0;
+        $("#display").attr("value", buffer);
     }
-    
+
     /* 
     console.log(multiply(4,5));
     console.log(divide(8,2));
@@ -71,7 +83,6 @@ $("button").click(function() {
     console.log(exponentiate(5,5));
     console.log(factorial($(this).html()));
     */
-});
 
 /**
  *  Returns the product of two numbers.
@@ -166,4 +177,7 @@ function factorial(input) {
 function clear() {
 
     $("#display").attr("value", 0);
+    
 }
+
+});
