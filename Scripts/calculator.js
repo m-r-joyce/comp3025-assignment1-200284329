@@ -22,10 +22,20 @@ $("button").click(function() {
     }
     else if ($(this).hasClass("operator") || $(this).hasClass("function")) {
 
-        buffer = $("#display").attr("value");
-        $("#display").attr("value", 0);
-        command = $(this).attr("id");
-        console.log(buffer);
+        if ($(this).attr("id") == "factorial") {
+            var input = $("#display").attr("value");
+            $("#display").attr("value", factorial(input));
+        }
+        else if ($(this).attr("id") == "squareRoot") {
+            var input = $("#display").attr("value");
+            $("#display").attr("value", squareRoot(input));
+        }
+        else {
+            buffer = $("#display").attr("value");
+            $("#display").attr("value", 0);
+            command = $(this).attr("id");
+            console.log(buffer);
+        }
         
     }
     
@@ -52,23 +62,16 @@ $("button").click(function() {
 
             case "subtract":
             result = subtract(buffer, input);
-            break;
-
-            case "squareRoot":
-            result = squareRoot(input);
-            break;
+            break;        
 
             case "exponentiate":
             result = exponentiate(buffer, input);
             break;
 
-            case "factorial":
-            result = factorial(input);
-            break;
-
         }        
 
             $("#display").attr("value", result);
+            buffer = 0;
         }
     else if ($(this).hasClass("clear")) {
         buffer = 0;
@@ -99,8 +102,14 @@ function multiply(multiplicand, multiplier) {
  */
 function divide(dividend, divisor) {
 
-    let quotient = dividend / divisor;
-    return quotient;
+    if (divisor != 0) {
+        var quotient = dividend / divisor;
+        return quotient;
+    }
+    else {
+        var error = "UNDEFINED";
+        return error;
+    }
 
 }
 
@@ -109,7 +118,7 @@ function divide(dividend, divisor) {
  */
 function add(addend, augend) {
 
-    let sum = addend + augend;
+    var sum = addend + augend;
     return sum;
 
 }
@@ -119,7 +128,7 @@ function add(addend, augend) {
  */
 function subtract(minuend, subtrahend) {
 
-    let difference = minuend - subtrahend;
+    var difference = minuend - subtrahend;
     return difference;
 
 }
@@ -130,11 +139,11 @@ function subtract(minuend, subtrahend) {
 function squareRoot(radicand) {
 
     if (radicand >= 0) {
-        let root = Math.sqrt(radicand);
+        var root = Math.sqrt(radicand);
         return root;
     }
     else {
-        let errorMessage = "Result is imaginary";
+        var errorMessage = "Result is imaginary";
         return errorMessage;
     }
 }
@@ -144,7 +153,7 @@ function squareRoot(radicand) {
  */
 function exponentiate(base, exponent) {
 
-    let power = base**exponent;
+    var power = base**exponent;
     return power;
 
 }
@@ -153,20 +162,22 @@ function exponentiate(base, exponent) {
  *  Returns the product of all integers between 1 and the input number.
  */
 function factorial(input) {
-
+    
+    // 0! equal to 1
     if (input == 0) {
-        let product = 1;
+        var product = 1;
         return product;
     }
-    else if (input > 0) {
-        let product = input;
+    // Verify that input is a whole number and then perform factorial
+    else if (input > 0 && input.indexOf(".") == -1) {
+        var product = input;
         while (input-- > 2) {
             product *= input;
         }
         return product;
     }
-    else if (input < 0) {
-        let error = "Undefined";
+    else if (input < 0 || input.indexOf(".") != -1) {
+        var error = "UNDEFINED";
         return error;
     }
 }
