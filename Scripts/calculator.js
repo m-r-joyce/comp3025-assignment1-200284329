@@ -11,6 +11,7 @@ var decimalKeyPressed = false;
 // Event Listener for Button elements
 $("button").click(function() {
 
+    //Operand class assigned to numbers 0 to 9 and decimal point.
     if ($(this).hasClass("operand")) {        
 
         var result = $("#display").attr("value");
@@ -29,10 +30,12 @@ $("button").click(function() {
         if ($(this).html() == "." && !decimalKeyPressed) {
             decimalKeyPressed = true;
         }
-        
+
         $("#display").attr("value", result);    
         
     }
+    //Operator class assigned to add, subtract, multiply, divide.
+    //Function class assigned to factorial, square root, exponent.
     else if ($(this).hasClass("operator") || $(this).hasClass("function")) {
         
         if ($(this).attr("id") == "factorial") {
@@ -53,6 +56,7 @@ $("button").click(function() {
         decimalKeyPressed = false;
     }
     
+    //Used to handle pressing of equals button, evaluating the equation.
     else if ($(this).hasClass("equals")) {
 
         var input = $("#display").attr("value");
@@ -84,10 +88,11 @@ $("button").click(function() {
 
         }        
 
-            $("#display").attr("value", result);
-            buffer = 0;
-            decimalKeyPressed = false;
-        }
+        $("#display").attr("value", result);
+        buffer = 0;
+        decimalKeyPressed = false;
+    }
+    //Reset display to 0.
     else if ($(this).hasClass("clear")) {
         
         clear();
@@ -169,14 +174,20 @@ function exponentiate(base, exponent) {
  *  Returns the product of all integers between 1 and the input number.
  */
 function factorial(input) {
+
+    if (input > 170) {
+        //Inputs beyond 170 return Infinity.
+        var error = "ANSWER TOO LARGE";
+        return error;
+    }
     
     // 0! equal to 1
-    if (input == 0) {
+    else if (input == 0) {
         var product = 1;
         return product;
     }
-    // Verify that input is a whole number and then perform factorial
-    else if (input > 0 && input.indexOf(".") == -1) {
+    // Verify that input is a whole number and then perform factorial.
+    else if (input > 0 && input <= 170 && input.indexOf(".") == -1) {
         var product = input;
         while (input-- > 2) {
             product *= input;
