@@ -6,22 +6,35 @@
 
 var buffer;
 var command;
+var decimalKeyPressed = false;
 
 // Event Listener for Button elements
 $("button").click(function() {
 
-    if ($(this).hasClass("operand")) {
+    if ($(this).hasClass("operand")) {        
+
         var result = $("#display").attr("value");
         if (result == 0) {
-            result = $(this).html();
+            if (!decimalKeyPressed || (decimalKeyPressed && $(this).html() != ".")) {
+                result = $(this).html();
+            }
         }
         else {
-        result += $(this).html();
+            if (!decimalKeyPressed || (decimalKeyPressed && $(this).html() != ".")) {
+                result += $(this).html();
+            }
         }
-        $("#display").attr("value", result); 
+
+        //Validation to prevent multiple decimals.
+        if ($(this).html() == "." && !decimalKeyPressed) {
+            decimalKeyPressed = true;
+        }
+        
+        $("#display").attr("value", result);    
+        
     }
     else if ($(this).hasClass("operator") || $(this).hasClass("function")) {
-
+        
         if ($(this).attr("id") == "factorial") {
             var input = $("#display").attr("value");
             $("#display").attr("value", factorial(input));
@@ -36,7 +49,8 @@ $("button").click(function() {
             command = $(this).attr("id");
             console.log(buffer);
         }
-        
+
+        decimalKeyPressed = false;
     }
     
     else if ($(this).hasClass("equals")) {
@@ -72,20 +86,13 @@ $("button").click(function() {
 
             $("#display").attr("value", result);
             buffer = 0;
+            decimalKeyPressed = false;
         }
     else if ($(this).hasClass("clear")) {
-        buffer = 0;
-        $("#display").attr("value", buffer);
-    }
+        
+        clear();
 
-    /* 
-    console.log(multiply(4,5));
-    console.log(divide(8,2));
-    console.log(add(4,4));
-    console.log(subtract(8,4));
-    console.log(exponentiate(5,5));
-    console.log(factorial($(this).html()));
-    */
+    }
 
 /**
  *  Returns the product of two numbers.
@@ -186,9 +193,10 @@ function factorial(input) {
  *  Clears the calculator display.
  */
 function clear() {
-
-    $("#display").attr("value", 0);
     
+    buffer = 0;
+    $("#display").attr("value", buffer);
+    decimalKeyPressed = false;
 }
 
 });
