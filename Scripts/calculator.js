@@ -7,6 +7,7 @@
 var buffer;
 var command;
 var decimalKeyPressed = false;
+var functionKeyPressed = false;
 var storedInput = 0;
 
 // Event Listener for Button elements
@@ -37,8 +38,9 @@ $("button").click(function () {
     }
     //Operator class assigned to add, subtract, multiply, divide.
     //Function class assigned to factorial, square root, exponent.
-    else if ($(this).hasClass("operator") || $(this).hasClass("function")) {
+    else if ($(this).hasClass("operator") || $(this).hasClass("function") && !functionKeyPressed) {
 
+        $(this).addClass("pressed");
         storedInput = 0;
         if ($(this).attr("id") == "factorial") {
             var input = $("#display").attr("value");
@@ -50,8 +52,9 @@ $("button").click(function () {
             buffer = $("#display").attr("value");
             $("#display").attr("value", 0);
             command = $(this).attr("id");
+            functionKeyPressed = true;
         }
-
+        
         decimalKeyPressed = false;
     }
 
@@ -89,10 +92,13 @@ $("button").click(function () {
 
         }
 
+        $("#" + command).removeClass("pressed");
+
         buffer = result;
         storedInput = input;
 
         $("#display").attr("value", result);
+        functionKeyPressed = false;
         decimalKeyPressed = false;
     }
     //Reset display to 0.
@@ -208,6 +214,10 @@ $("button").click(function () {
         buffer = 0;
         $("#display").attr("value", buffer);
         decimalKeyPressed = false;
+        functionKeyPressed = false;
+        $("#" + command).removeClass("pressed");
+        $("#squareRoot").removeClass("pressed");
+        $("#factorial").removeClass("pressed");
     }
 
 });
