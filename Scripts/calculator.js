@@ -50,7 +50,6 @@ $("button").click(function () {
             buffer = $("#display").attr("value");
             $("#display").attr("value", 0);
             command = $(this).attr("id");
-            console.log(buffer);
         }
 
         decimalKeyPressed = false;
@@ -65,10 +64,7 @@ $("button").click(function () {
         if (storedInput != 0) {
             input = storedInput;
         }
-
-
-        console.log(buffer + " " + command + " " + input);
-
+        
         switch (command) {
 
             case "multiply":
