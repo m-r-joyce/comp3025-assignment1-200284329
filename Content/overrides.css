@@ -21,6 +21,9 @@ body {
     text-align: right;
 }
 
+/**
+ *  Buttons
+ **/
 .ui-btn {
     border: 3px #454443 solid;
     height: 16%;
