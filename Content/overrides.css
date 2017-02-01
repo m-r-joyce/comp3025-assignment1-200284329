@@ -1,4 +1,4 @@
-/**
+ /**
  *  overrides.css
  *  Michael Joyce | 200284329 | 25 January 2017
  *  UI customizations to override jQuery Mobile defaults.
@@ -8,7 +8,7 @@
  *  Calculator body
  **/
 body {
-    background-color: #454443;
+    background-color: #363838;
     font-size: 1.1em;
     color: #2B2A2B;
 }
@@ -18,19 +18,30 @@ body {
 }
 
 #display {
-    width: 100%;
+    width: 99%;
     height: 18%;
-    background-color: #FFFDF7;
-    font-size: 1.3em;
-    direction: rtl;
-    text-indent: 2%;
+    background-color: #363838;
+    font-size: 1.35em;
+    text-align: right;
+    color: #FFFDFA;
+    outline: none;
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-width: 0;
+}
+
+.ui-grid-d {
+    border-top: 3px #FFFDFA solid;
+    width: 100%;
+    margin-top: 2%;
 }
 
 /**
  *  Calculator buttons
  **/
 .ui-btn {
-    border: 3px #454443 solid;
+    border: 3px #363838 solid;
     height: 16%;
     font-size: 2em;
     text-align: center;
@@ -38,23 +49,23 @@ body {
 }
 
 .operand {
-    background-color: #FFFDF7;
+    background-color: #FFFDFA;
 }
 
 .operator {
-    background-color: #3385FE;
+    background-color: #61BE6C;
 }
 
 .equals {
-    background-color: #FED928;
+    background-color: #FE8C17;
 }
 
 .function, .clear {
-    background-color: #173C72;
-    color: #FFFDF7;
+    background-color: #407E48;
+    color: #FFFDFA;
 }
 
 .pressed {
-    background-color: red;
-    color: white;
+    background-color: #FE614C;
+    color: #FFFDFA;
 }

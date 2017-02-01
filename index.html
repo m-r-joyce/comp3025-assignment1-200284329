@@ -1,71 +1,74 @@
 <!DOCTYPE <html>
-    <!--
+<!--
         index.html
         Michael Joyce | 200284329 | 25 January 2017
         Layout for a simple calculator application using jQuery Mobile.
     -->
-    <head>
-        <title>COMP3025 Assignment 1</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <!-- CSS Section -->
-        <link rel="stylesheet" href="\Scripts\lib\jquery-mobile-bower\css\jquery.mobile-1.4.5.min.css" />
-        <link rel="stylesheet" href="\Content\overrides.css" />        
-    </head>
-    <body>
-        <!-- Calculator Page -->
-        <div data-role="page" id="calculator-page" data-theme="a">
-            <div class="calculator-body" data-role="main">
-                <div class="ui-grid-a">
-                    <input type="text" id="display" disabled="disabled" value="0" class="ui-corner-all"></input>                
+
+<head>
+    <title>COMP3025 Assignment 1</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!-- CSS Section -->
+    <link rel="stylesheet" href="\Scripts\lib\jquery-mobile-bower\css\jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="\Content\overrides.css" />
+</head>
+
+<body>
+    <!-- Calculator Page -->
+    <div data-role="page" id="calculator-page" data-theme="a">
+        <div class="calculator-body" data-role="main">
+            <div class="ui-grid-a">
+                <input type="text" id="display" disabled="disabled" value="0" class=""></input>
+            </div>
+            <div class="ui-grid-d">
+                <div class="ui-block-b">
+                    <div>
+                        <button class="ui-btn ui-shadow operand">7</button>
+                        <button class="ui-btn ui-shadow operand">4</button>
+                        <button class="ui-btn ui-shadow operand">1</button>
+                        <button class="ui-btn ui-shadow operand">0</button>
+                    </div>
                 </div>
-                <div class="ui-grid-d">
-                    <div class="ui-block-b">
-                        <div>
-                            <button class="ui-btn ui-corner-all ui-shadow operand">7</button>
-                            <button class="ui-btn ui-corner-all ui-shadow operand">4</button>
-                            <button class="ui-btn ui-corner-all ui-shadow operand">1</button>
-                            <button class="ui-btn ui-corner-all ui-shadow operand">0</button>
-                        </div>
+                <div class="ui-block-b">
+                    <div>
+                        <button class="ui-btn ui-shadow operand">8</button>
+                        <button class="ui-btn ui-shadow operand">5</button>
+                        <button class="ui-btn ui-shadow operand">2</button>
+                        <button class="ui-btn ui-shadow operand">.</button>
                     </div>
-                    <div class="ui-block-b">
-                        <div>
-                            <button class="ui-btn ui-corner-all ui-shadow operand">8</button>
-                            <button class="ui-btn ui-corner-all ui-shadow operand">5</button>
-                            <button class="ui-btn ui-corner-all ui-shadow operand">2</button>
-                            <button class="ui-btn ui-corner-all ui-shadow operand">.</button>
-                        </div>
+                </div>
+                <div class="ui-block-b">
+                    <div>
+                        <button class="ui-btn ui-shadow operand">9</button>
+                        <button class="ui-btn ui-shadow operand">6</button>
+                        <button class="ui-btn ui-shadow operand">3</button>
+                        <button class="ui-btn ui-shadow equals">=</button>
                     </div>
-                    <div class="ui-block-b">
-                        <div>
-                            <button class="ui-btn ui-corner-all ui-shadow operand">9</button>
-                            <button class="ui-btn ui-corner-all ui-shadow operand">6</button>
-                            <button class="ui-btn ui-corner-all ui-shadow operand">3</button>
-                            <button class="ui-btn ui-corner-all ui-shadow equals">=</button>
-                        </div>
+                </div>
+                <div class="ui-block-b">
+                    <div>
+                        <button class="ui-btn ui-shadow operator" id="divide">÷</button>
+                        <button class="ui-btn ui-shadow operator" id="multiply">×</button>
+                        <button class="ui-btn ui-shadow operator" id="subtract">-</button>
+                        <button class="ui-btn ui-shadow operator" id="add">+</button>
                     </div>
-                    <div class="ui-block-b">
-                        <div>
-                            <button class="ui-btn ui-corner-all ui-shadow operator" id="divide">÷</button>
-                            <button class="ui-btn ui-corner-all ui-shadow operator" id="multiply">×</button>
-                            <button class="ui-btn ui-corner-all ui-shadow operator" id="subtract">-</button>
-                            <button class="ui-btn ui-corner-all ui-shadow operator" id="add">+</button>
-                        </div>
-                    </div>
-                    <div class="ui-block-b">
-                        <div>
-                            <button class="ui-btn ui-corner-all ui-shadow clear" id="clear">C</button>
-                            <button class="ui-btn ui-corner-all ui-shadow function" id="squareRoot">√</button>
-                            <button class="ui-btn ui-corner-all ui-shadow function" id="exponentiate">x<sup>y</sup></button>
-                            <button class="ui-btn ui-corner-all ui-shadow function" id="factorial">x!</button>
-                        </div>
+                </div>
+                <div class="ui-block-b">
+                    <div>
+                        <button class="ui-btn ui-shadow clear" id="clear">C</button>
+                        <button class="ui-btn ui-shadow function" id="squareRoot">√</button>
+                        <button class="ui-btn ui-shadow function" id="exponentiate">x<sup>y</sup></button>
+                        <button class="ui-btn ui-shadow function" id="factorial">x!</button>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- JavaScript Section -->
-        <script src="\Scripts\lib\jquery\dist\jquery.min.js"></script>
-        <script src="\Scripts\lib\jquery-mobile-bower\js\jquery.mobile-1.4.5.min.js"></script>
-        <script src="\Scripts\calculator.js"></script>
-    </body>
+    </div>
+    <!-- JavaScript Section -->
+    <script src="\Scripts\lib\jquery\dist\jquery.min.js"></script>
+    <script src="\Scripts\lib\jquery-mobile-bower\js\jquery.mobile-1.4.5.min.js"></script>
+    <script src="\Scripts\calculator.js"></script>
+</body>
+
 </html>

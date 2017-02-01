@@ -9,6 +9,7 @@ var command;
 var decimalKeyPressed = false;
 var functionKeyPressed = false;
 var storedInput = 0;
+var isNegative = false;
 
 // Event Listener for Button elements
 $("button").click(function () {
@@ -20,9 +21,21 @@ $("button").click(function () {
         var result = $("#display").attr("value");
         if (result == 0 || !$.isNumeric(result)) {
             if (!decimalKeyPressed || (decimalKeyPressed && $(this).html() != ".")) {
-                result = $(this).html();
+                if (isNegative) {
+                    result = -1 * $(this).html();
+                    isNegative = false;
+                } else {
+                    //Handles event where decimal is first key of input pressed.
+                    if (result.indexOf(".") != -1) {
+                        result = "0." + $(this).html();
+                    }
+                    else {
+                        result = $(this).html();
+                    }
+                }
             }
-        } else if (result != 0) {
+        } 
+        else if (result != 0) {
             if (!decimalKeyPressed || (decimalKeyPressed && $(this).html() != ".")) {
                 result += $(this).html();
             }
@@ -40,7 +53,6 @@ $("button").click(function () {
     //Function class assigned to factorial, square root, exponent.
     else if ($(this).hasClass("operator") || $(this).hasClass("function") && !functionKeyPressed) {
 
-        $(this).addClass("pressed");
         storedInput = 0;
         if ($(this).attr("id") == "factorial") {
             var input = $("#display").attr("value");
@@ -48,13 +60,16 @@ $("button").click(function () {
         } else if ($(this).attr("id") == "squareRoot") {
             var input = $("#display").attr("value");
             $("#display").attr("value", squareRoot(input));
+        } else if ($("#display").attr("value") == 0 && $(this).attr("id") == "subtract") {
+            isNegative = true;
         } else {
             buffer = $("#display").attr("value");
             $("#display").attr("value", 0);
             command = $(this).attr("id");
             functionKeyPressed = true;
+            $(this).addClass("pressed");
         }
-        
+
         decimalKeyPressed = false;
     }
 
@@ -67,7 +82,7 @@ $("button").click(function () {
         if (storedInput != 0) {
             input = storedInput;
         }
-        
+
         switch (command) {
 
             case "multiply":
@@ -207,7 +222,7 @@ $("button").click(function () {
     }
 
     /**
-     *  Clears the calculator display.
+     *  Clears the calculator display and buffer.
      */
     function clear() {
 
